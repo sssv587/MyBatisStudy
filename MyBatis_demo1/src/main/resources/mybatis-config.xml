@@ -3,6 +3,8 @@
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
+    <!--引入properties文件-->
+    <properties resource="jdbc.properties"/>
     <!--
         environments:配置多个连接数据库的环境
         属性:
@@ -34,13 +36,13 @@
             -->
             <dataSource type="POOLED">
                 <!--设置连接数据库的驱动-->
-                <property name="driver" value="com.mysql.jdbc.Driver"/>
+                <property name="driver" value="${jdbc.driver}"/>
                 <!--设置连接数据库的连接地址-->
-                <property name="url" value="jdbc:mysql://localhost:3306/mybatis"/>
+                <property name="url" value="${jdbc.url}"/>
                 <!--设置连接数据库的用户名-->
-                <property name="username" value="root"/>
+                <property name="username" value="${jdbc.user}"/>
                 <!--设置连接数据库的密码-->
-                <property name="password" value="123456"/>
+                <property name="password" value="${jdbc.password}"/>
             </dataSource>
         </environment>
 
