@@ -1,6 +1,7 @@
 package com.futurebytedance.test;
 
 import com.futurebytedance.mapper.UserMapper;
+import com.futurebytedance.pojo.User;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -9,6 +10,7 @@ import org.junit.Test;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
 
 /**
  * @author yuhang.sun
@@ -55,6 +57,10 @@ public class MyBatisTest {
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(is);
         SqlSession sqlSession = sqlSessionFactory.openSession(true);
         UserMapper mapper = sqlSession.getMapper(UserMapper.class);
-        mapper.deleteUser();
+//        mapper.deleteUser();
+//        User userById = mapper.getUserById();
+//        System.out.println(userById);
+        List<User> list = mapper.getAllUser();
+        list.forEach(System.out::println);
     }
 }

@@ -1,5 +1,9 @@
 package com.futurebytedance.mapper;
 
+import com.futurebytedance.pojo.User;
+
+import java.util.List;
+
 /**
  * @author yuhang.sun
  * @version 1.0
@@ -25,4 +29,14 @@ public interface UserMapper {
      * 删除用户信息
      */
     void deleteUser();
+
+    /**
+     * 根据id查询用户信息
+     */
+    User getUserById();
+
+    /**
+     * 查询所有的用户信息
+     */
+    List<User> getAllUser();
 }
