@@ -12,9 +12,17 @@
     <!--引入properties文件-->
     <properties resource="jdbc.properties"/>
 
-    <!--设置类型别名-->
+    <!--设置类型别名,不区分大小写-->
     <typeAliases>
-        <typeAlias type="com.futurebytedance.pojo.User" alias="User"/>
+        <!--
+            typeAlias:设置某个类型的别名
+            属性:
+                type:设置需要设置别名的类型
+                alias:设置某个类型的别名,如果不设置该属性,那么该类型拥有默认的别名,即类名且不区分大小写
+        -->
+<!--        <typeAlias type="com.futurebytedance.pojo.User" alias="User"/>-->
+        <!--以包为单位,将包下所有的类型设置默认的类型别名-->
+        <package name="com.futurebytedance.pojo"/>
     </typeAliases>
 
     <!--
@@ -70,6 +78,13 @@
     </environments>
     <!--引入映射文件-->
     <mappers>
-        <mapper resource="mappers/UserMapper.xml"/>
+<!--        <mapper resource="mappers/UserMapper.xml"/>-->
+        <!--
+            以包为单位引入映射文件
+            要求:
+                1、mapper接口所在的包要和映射文件所在的包一致
+                2、mapper接口要和映射文件的名字一致
+        -->
+        <package name="com.futurebytedance.mapper"/>
     </mappers>
 </configuration>
