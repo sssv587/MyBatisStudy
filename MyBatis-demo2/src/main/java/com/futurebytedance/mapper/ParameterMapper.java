@@ -12,6 +12,11 @@ import java.util.List;
  */
 public interface ParameterMapper {
     /**
+     * 验证登录
+     */
+    User checkLogin(String username, String password);
+
+    /**
      * 根据用户名查询用户信息
      */
     User getUserByUserName(String username);

@@ -13,4 +13,10 @@
         <!--select * from t_user where username = #{username}-->
         select * from t_user where username = '${username}'
     </select>
+
+    <!--User checkLogin(String username, String password);-->
+    <select id="checkLogin" resultType="User">
+        <!--select * from t_user where username = #{arg0} and password = #{arg1}-->
+        select * from t_user where username = '${param1}' and password = '${param2}'
+    </select>
 </mapper>
