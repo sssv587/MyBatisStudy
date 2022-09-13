@@ -13,4 +13,9 @@
     <select id="getAllUser" resultType="user">
         select * from t_user
     </select>
+
+    <!-- Integer getCount();-->
+    <select id="getCount" resultType="java.lang.Integer">
+        select count(1) from t_user
+    </select>
 </mapper>

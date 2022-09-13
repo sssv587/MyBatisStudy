@@ -22,7 +22,20 @@ public class SelectMapperTest {
      * a>可以通过list集合接收
      * b>
      * 注意:一定不能通过实体类对象接收结果,此时会抛异常TooManyResultException
+     *
+     * MyBatis中设置了默认的类型别名
+     * Java.lang.Integer--->int,integer
+     * int--->_int,_integer
+     * Map--->map
+     * String--->string
      */
+
+    @Test
+    public void testGetCount() {
+        SqlSession sqlSession = SqlSessionUtils.getSqlSession();
+        SelectMapper mapper = sqlSession.getMapper(SelectMapper.class);
+        System.out.println(mapper.getCount());
+    }
 
     @Test
     public void testGetAllUser() {
