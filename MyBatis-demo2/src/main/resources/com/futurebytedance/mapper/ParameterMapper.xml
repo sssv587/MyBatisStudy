@@ -7,4 +7,10 @@
     <select id="getAllUser" resultType="User">
         select * from t_user
     </select>
+
+    <!--User getUserByUserName(String username);-->
+    <select id="getUserByUserName" resultType="User">
+        <!--select * from t_user where username = #{username}-->
+        select * from t_user where username = '${username}'
+    </select>
 </mapper>

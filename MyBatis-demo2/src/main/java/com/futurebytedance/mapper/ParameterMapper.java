@@ -12,6 +12,11 @@ import java.util.List;
  */
 public interface ParameterMapper {
     /**
+     * 根据用户名查询用户信息
+     */
+    User getUserByUserName(String username);
+
+    /**
      * 查询所有的员工信息
      */
     List<User> getAllUser();
