@@ -3,6 +3,7 @@ package com.futurebytedance.mapper;
 import com.futurebytedance.pojo.User;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author yuhang.sun
@@ -11,6 +12,11 @@ import java.util.List;
  * @Description 获取参数
  */
 public interface ParameterMapper {
+    /**
+     * 验证登录(参数为map)
+     */
+    User checkLoginByMap(Map<String, Object> map);
+
     /**
      * 验证登录
      */

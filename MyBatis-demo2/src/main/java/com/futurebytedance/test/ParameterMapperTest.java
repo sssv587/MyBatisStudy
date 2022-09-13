@@ -9,7 +9,9 @@ import org.junit.Test;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author yuhang.sun
@@ -26,11 +28,24 @@ public class ParameterMapperTest {
      * 1、mapper接口方法的参数为单个的字面量类型
      * 可以通过${}和#{}以任意的名称获取参数值,但是需要注意${}的单引号问题
      * 2、mapper接口方法的参数为多个时
-     *  此时MyBatis会将这些参数放在一个map集合中,以两种方式进行存储
-     *  a>以arg0,arg1... 为键,以参数为值
-     *  b>以param0,param1... 为键,以参数为值
-     *  因此只需要通过#{}和${}以键的方式访问值即可,但是需要注意${}的单引号问题
+     * 此时MyBatis会将这些参数放在一个map集合中,以两种方式进行存储
+     * a>以arg0,arg1... 为键,以参数为值
+     * b>以param0,param1... 为键,以参数为值
+     * 因此只需要通过#{}和${}以键的方式访问值即可,但是需要注意${}的单引号问题
+     * 3、若mapper接口方法的参数有多个时,可以手动将这些参数放在一个map中存储
+     * 只需要通过#{}和${}以键的方式访问值即可,但是需要注意${}的单引号问题
      */
+
+    @Test
+    public void checkLoginByMap() {
+        SqlSession sqlSession = SqlSessionUtils.getSqlSession();
+        ParameterMapper mapper = sqlSession.getMapper(ParameterMapper.class);
+        Map<String, Object> map = new HashMap<>();
+        map.put("username", "admin");
+        map.put("password", "123456");
+        User user = mapper.checkLoginByMap(map);
+        System.out.println(user);
+    }
 
     @Test
     public void checkLogin() {
