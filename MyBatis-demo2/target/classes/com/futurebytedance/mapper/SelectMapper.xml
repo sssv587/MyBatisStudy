@@ -18,4 +18,9 @@
     <select id="getCount" resultType="java.lang.Integer">
         select count(1) from t_user
     </select>
+
+    <!--Map<String,Object> getUserByIdToMap(@Param("id") Integer id);-->
+    <select id="getUserByIdToMap" resultType="map">
+        select * from t_user where id = #{id}
+    </select>
 </mapper>

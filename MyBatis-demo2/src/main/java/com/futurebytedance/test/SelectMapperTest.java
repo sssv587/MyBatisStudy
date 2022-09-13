@@ -18,6 +18,7 @@ public class SelectMapperTest {
      * a>可以通过实体类对象或者集合接收
      * b>可以通过list集合接收
      * c>可以通过map集合接收
+     * 结果:{password=123456, sex=男, id=3, age=23, email=12345@qq.com, username=admin}
      * 2、若查询出的数据有多条
      * a>可以通过list集合接收
      * b>
@@ -29,6 +30,13 @@ public class SelectMapperTest {
      * Map--->map
      * String--->string
      */
+
+    @Test
+    public void testGetUserByIdToMap() {
+        SqlSession sqlSession = SqlSessionUtils.getSqlSession();
+        SelectMapper mapper = sqlSession.getMapper(SelectMapper.class);
+        System.out.println(mapper.getUserByIdToMap(3));
+    }
 
     @Test
     public void testGetCount() {
