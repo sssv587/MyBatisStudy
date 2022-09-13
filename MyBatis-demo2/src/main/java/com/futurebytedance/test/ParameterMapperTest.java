@@ -34,7 +34,17 @@ public class ParameterMapperTest {
      * 因此只需要通过#{}和${}以键的方式访问值即可,但是需要注意${}的单引号问题
      * 3、若mapper接口方法的参数有多个时,可以手动将这些参数放在一个map中存储
      * 只需要通过#{}和${}以键的方式访问值即可,但是需要注意${}的单引号问题
+     * 4、mapper接口方法的参数是一个实体类类型的参数
+     * 只需要通过#{}和${}以属性的方式属性值即可,但是需要注意${}的单引号问题
      */
+
+    @Test
+    public void testInsertUser() {
+        SqlSession sqlSession = SqlSessionUtils.getSqlSession();
+        ParameterMapper mapper = sqlSession.getMapper(ParameterMapper.class);
+        int result = mapper.insertUser(new User(null, "李四", "123", 23, "男", "123@qq.com"));
+        System.out.println(result);
+    }
 
     @Test
     public void checkLoginByMap() {

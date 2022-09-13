@@ -15,8 +15,18 @@
     </select>
 
     <!--User checkLogin(String username, String password);-->
-    <select id="checkLogin" resultType="User">
+    <select id="checkLogin" resultType="com.futurebytedance.pojo.User">
         <!--select * from t_user where username = #{arg0} and password = #{arg1}-->
         select * from t_user where username = '${param1}' and password = '${param2}'
     </select>
+
+    <!--User checkLoginByMap(Map<String, Object> map);-->
+    <select id="checkLoginByMap" resultType="User">
+        select * from t_user where username = #{username} and password = #{password}
+    </select>
+
+    <!--int insertUser(User user);-->
+    <insert id="insertUser">
+        insert into t_user values(null,#{username},#{password},#{age},#{sex},#{email})
+    </insert>
 </mapper>
