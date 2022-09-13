@@ -1,6 +1,7 @@
 package com.futurebytedance.mapper;
 
 import com.futurebytedance.pojo.User;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 import java.util.Map;
@@ -12,6 +13,11 @@ import java.util.Map;
  * @Description 获取参数
  */
 public interface ParameterMapper {
+    /**
+     * 验证登录(使用@Param)
+     */
+    User checkLoginByParam(@Param("username") String username, @Param("password") String password);
+
     /**
      * 添加用户信息
      */

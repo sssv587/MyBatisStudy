@@ -36,7 +36,20 @@ public class ParameterMapperTest {
      * 只需要通过#{}和${}以键的方式访问值即可,但是需要注意${}的单引号问题
      * 4、mapper接口方法的参数是一个实体类类型的参数
      * 只需要通过#{}和${}以属性的方式属性值即可,但是需要注意${}的单引号问题
+     * 5、使用@Param注解命名参数
+     * 此时MyBatis会将这些参数放在一个map集合中,以两种方式进行存储
+     * a>以@Param注解的值为键,以参数为值
+     * b>以param0,param1... 为键,以参数为值
+     * 需要通过#{}和${}以属性的方式属性值即可,但是需要注意${}的单引号问题
      */
+
+    @Test
+    public void testCheckLoginByParam() {
+        SqlSession sqlSession = SqlSessionUtils.getSqlSession();
+        ParameterMapper mapper = sqlSession.getMapper(ParameterMapper.class);
+        User user = mapper.checkLoginByParam("admin", "123456");
+        System.out.println(user);
+    }
 
     @Test
     public void testInsertUser() {
