@@ -30,7 +30,16 @@ public class ResultMapTest {
      * 处理多对一的映射关系:
      * a> 级联属性赋值
      * b> association处理
+     * c> 分步查询
      */
+    @Test
+    public void testGetEmpAndDeptByStep() {
+        SqlSession sqlSession = SqlSessionUtils.getSqlSession();
+        EmpMapper mapper = sqlSession.getMapper(EmpMapper.class);
+        Emp empAndDeptByStepOne = mapper.getEmpAndDeptByStepOne(1);
+        System.out.println(empAndDeptByStepOne);
+    }
+
     @Test
     public void testGetEmpAndDept() {
         SqlSession sqlSession = SqlSessionUtils.getSqlSession();

@@ -43,6 +43,12 @@
         <result property="dept.deptName" column="dept_name"></result>
     </resultMap>
 
+    <!--
+        处理多对一映射关系方式二:association
+        association:处理多对一的映射关系
+        property:需要处理多对一映射关系的属性名
+        javaType:该属性的类型
+    -->
     <resultMap id="emdAndDeptResultMapTwo" type="Emp">
         <id property="eid" column="eid"></id>
         <result property="empName" column="emp_name"></result>
@@ -54,6 +60,21 @@
             <result property="deptName" column="dept_name"></result>
         </association>
     </resultMap>
+
+    <resultMap id="emdAndDeptResultMap" type="Emp">
+        <id property="eid" column="eid"></id>
+        <result property="empName" column="emp_name"></result>
+        <result property="age" column="age"></result>
+        <result property="sex" column="sex"></result>
+        <result property="email" column="email"></result>
+        <association property="dept"
+                     select="com.futurebytedance.mapper.DeptMapper.getEmpAndDeptByStepTwo"
+                     column="did"></association>
+    </resultMap>
+    <!--Emp getEmpAndDeptByStepOne(@Param("eid") Integer eid);-->
+    <select id="getEmpAndDeptByStepOne" resultMap="emdAndDeptResultMap">
+        select * from t_emp where eid = #{eid}
+    </select>
 
     <select id="getAllEmpOld" resultType="Emp">
         <!--select eid,emp_name as empName,age,sex,email from t_emp-->
