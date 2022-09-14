@@ -5,6 +5,7 @@
 <mapper namespace="com.futurebytedance.mapper.EmpMapper">
     <!--List<Emp> getAllEmp();-->
     <select id="getAllEmp" resultType="Emp">
-        select eid,emp_name as empName,age,sex,email from t_emp
+        <!--select eid,emp_name as empName,age,sex,email from t_emp-->
+        select * from t_emp
     </select>
 </mapper>

@@ -16,6 +16,8 @@ public class ResultMapTest {
     /**
      * 解决字段名和属性名不一致的情况
      * a> 为字段起别名,保持和属性名的一致
+     * b> 设置全局配置,将_自动映射为驼峰
+     * <setting name="mapUnderscoreToCamelCase" value="true"/>
      */
     @Test
     public void testGetAllEmp() {
