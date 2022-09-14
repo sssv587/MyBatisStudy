@@ -44,6 +44,7 @@
     </resultMap>
 
     <!--
+        处理多对一映射关系方式二:association
         association:处理多对一的映射关系
         property:需要处理多对一映射关系的属性名
         javaType:该属性的类型
