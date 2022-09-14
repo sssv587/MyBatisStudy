@@ -15,4 +15,14 @@
     <delete id="deleteMore">
         delete from t_user where id in (${ids})
     </delete>
+
+    <!--List<User> getUserByTableName(@Param("tableName") String tableName);-->
+    <select id="getUserByTableName" resultType="User">
+        select * from ${tableName}
+    </select>
+
+    <!--void insertUser(User user);-->
+    <insert id="insertUser" useGeneratedKeys="true" keyProperty="id">
+        insert into t_user values(null,#{username},#{password},#{age},#{sex},#{email})
+    </insert>
 </mapper>

@@ -6,6 +6,7 @@ import com.futurebytedance.utils.SqlSessionUtils;
 import org.apache.ibatis.session.SqlSession;
 import org.junit.Test;
 
+import java.sql.*;
 import java.util.List;
 
 /**
@@ -37,5 +38,23 @@ public class SQLMapperTest {
         SQLMapper mapper = sqlSession.getMapper(SQLMapper.class);
         List<User> list = mapper.getUserByTableName("t_user");
         System.out.println(list);
+    }
+
+    @Test
+    public void testJDBC() throws Exception {
+        Class.forName("");
+        Connection connection = DriverManager.getConnection("", "", "");
+        PreparedStatement ps = connection.prepareStatement("insert ", Statement.RETURN_GENERATED_KEYS);
+        ps.executeUpdate();
+        ResultSet resultSet = ps.getGeneratedKeys();
+    }
+
+    @Test
+    public void testInsertUser() {
+        SqlSession sqlSession = SqlSessionUtils.getSqlSession();
+        SQLMapper mapper = sqlSession.getMapper(SQLMapper.class);
+        User user = new User(null, "王五", "123", 23, "男", "123@qq.com");
+        mapper.insertUser(user);
+        System.out.println(user);
     }
 }
