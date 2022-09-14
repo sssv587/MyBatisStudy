@@ -1,4 +1,6 @@
+import com.futurebytedance.mapper.DeptMapper;
 import com.futurebytedance.mapper.EmpMapper;
+import com.futurebytedance.pojo.Dept;
 import com.futurebytedance.pojo.Emp;
 import com.futurebytedance.utils.SqlSessionUtils;
 import org.apache.ibatis.session.SqlSession;
@@ -31,6 +33,11 @@ public class ResultMapTest {
      * a> 级联属性赋值
      * b> association处理
      * c> 分步查询
+     *
+     *
+     * 处理一对多的映射关系
+     * a> collection
+     * b> 分布查询
      */
     @Test
     public void testGetEmpAndDeptByStep() {
@@ -54,5 +61,13 @@ public class ResultMapTest {
         EmpMapper mapper = sqlSession.getMapper(EmpMapper.class);
         List<Emp> list = mapper.getAllEmp();
         list.forEach(System.out::println);
+    }
+
+    @Test
+    public void testGetDeptAndEmp(){
+        SqlSession sqlSession = SqlSessionUtils.getSqlSession();
+        DeptMapper mapper = sqlSession.getMapper(DeptMapper.class);
+        Dept dept = mapper.getDeptAndEmp(1);
+        System.out.println(dept);
     }
 }
