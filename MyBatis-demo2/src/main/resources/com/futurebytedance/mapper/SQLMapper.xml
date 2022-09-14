@@ -15,4 +15,9 @@
     <delete id="deleteMore">
         delete from t_user where id in (${ids})
     </delete>
+
+    <!--List<User> getUserByTableName(@Param("tableName") String tableName);-->
+    <select id="getUserByTableName" resultType="User">
+        select * from ${tableName}
+    </select>
 </mapper>
