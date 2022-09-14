@@ -84,6 +84,11 @@
         select * from t_emp where eid = #{eid}
     </select>
 
+    <!--List<Emp> getDeptAndEmpByStepTwo(@Param("did") Integer did);-->
+    <select id="getDeptAndEmpByStepTwo" resultType="Emp">
+        select * from t_emp where did = #{did}
+    </select>
+
     <select id="getAllEmpOld" resultType="Emp">
         <!--select eid,emp_name as empName,age,sex,email from t_emp-->
         select * from t_emp
