@@ -3,8 +3,20 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.futurebytedance.mapper.EmpMapper">
+    <resultMap id="empResultMap" type="Emp">
+        <id property="eid" column="eid"></id>
+        <result property="empName" column="emp_name"></result>
+        <result property="age" column="age"></result>
+        <result property="sex" column="sex"></result>
+        <result property="email" column="email"></result>
+    </resultMap>
+
     <!--List<Emp> getAllEmp();-->
-    <select id="getAllEmp" resultType="Emp">
+    <select id="getAllEmp" resultMap="empResultMap">
+        select * from t_emp
+    </select>
+
+    <select id="getAllEmpOld" resultType="Emp">
         <!--select eid,emp_name as empName,age,sex,email from t_emp-->
         select * from t_emp
     </select>
