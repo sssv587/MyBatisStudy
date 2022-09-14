@@ -26,7 +26,18 @@ public class ResultMapTest {
      *         <result property="sex" column="sex"></result>
      *         <result property="email" column="email"></result>
      * </resultMap>
+     *
+     * 处理多对一的映射关系:
+     * a> 级联属性赋值
      */
+    @Test
+    public void testGetEmpAndDept() {
+        SqlSession sqlSession = SqlSessionUtils.getSqlSession();
+        EmpMapper mapper = sqlSession.getMapper(EmpMapper.class);
+        Emp emp = mapper.getEmpAndDept(1);
+        System.out.println(emp);
+    }
+
     @Test
     public void testGetAllEmp() {
         SqlSession sqlSession = SqlSessionUtils.getSqlSession();
