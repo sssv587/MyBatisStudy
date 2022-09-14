@@ -29,6 +29,7 @@ public class ResultMapTest {
      *
      * 处理多对一的映射关系:
      * a> 级联属性赋值
+     * b> association处理
      */
     @Test
     public void testGetEmpAndDept() {
