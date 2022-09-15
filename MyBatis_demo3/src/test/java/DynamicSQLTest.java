@@ -26,7 +26,17 @@ public class DynamicSQLTest {
      * prefix|suffix:将trim标签中内容前面或后面添加指定内容
      * prefixOverrides|suffixOverrides:将trim标签中内容前面或后面去掉指定内容
      * 若标签中没有内容时,trim标签也没有任何效果
+     * 4.choose、when、otherwise 相当于if...else if...else
+     * when至少要有一个,otherwise最多只能有一个
      */
+    @Test
+    public void testGetEmpByChoose() {
+        SqlSession sqlSession = SqlSessionUtils.getSqlSession();
+        DynamicSQLMapper mapper = sqlSession.getMapper(DynamicSQLMapper.class);
+        List<Emp> list = mapper.getEmpByChoose(new Emp(null, "张三", 23, "男", "123@qq.com"));
+        System.out.println(list);
+    }
+
     @Test
     public void testGetEmpByCondition() {
         SqlSession sqlSession = SqlSessionUtils.getSqlSession();
