@@ -28,7 +28,16 @@ public class DynamicSQLTest {
      * 若标签中没有内容时,trim标签也没有任何效果
      * 4.choose、when、otherwise 相当于if...else if...else
      * when至少要有一个,otherwise最多只能有一个
+     * 5.foreach
      */
+    @Test
+    public void testDeleteMoreByArray() {
+        SqlSession sqlSession = SqlSessionUtils.getSqlSession();
+        DynamicSQLMapper mapper = sqlSession.getMapper(DynamicSQLMapper.class);
+        int result = mapper.deleteMoreByArray(new Integer[]{6, 7, 8});
+        System.out.println(result);
+    }
+
     @Test
     public void testGetEmpByChoose() {
         SqlSession sqlSession = SqlSessionUtils.getSqlSession();
