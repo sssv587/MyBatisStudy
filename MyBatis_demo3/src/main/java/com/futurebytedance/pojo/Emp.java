@@ -1,12 +1,14 @@
 package com.futurebytedance.pojo;
 
+import java.io.Serializable;
+
 /**
  * @author yuhang.sun
  * @version 1.0
  * @date 2022/9/14 - 20:13
  * @Description
  */
-public class Emp {
+public class Emp implements Serializable {
     private Integer eid;
     private String empName;
     private Integer age;
